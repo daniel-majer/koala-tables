@@ -9,7 +9,7 @@ export const TableCollapse = ({ row, isCollapsed }) => {
     <tr>
       <td colSpan={Object.keys(row.data).length + 2}>
         <div
-          className={`transition-all duration-300 overflow-hidden ${
+          className={`overflow-hidden ${
             isCollapsed ? 'max-h-fit opacity-100' : 'max-h-0 opacity-0'
           }`}
         >
