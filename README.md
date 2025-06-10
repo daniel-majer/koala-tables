@@ -1,15 +1,15 @@
 # React + Vite
 
-- exist more advanced solutions for tables like Tanstack Query
-- when fetch, I could add loading spinner, tanstack query for handling remote state etc.
+Hey, I created 2 versions of design patterns. Please check both branches (main, V2). Difference is that V2 use Compound design pattern - so all table logic is encapsulated in one component and less files in folder structure.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Tables are reusable, flexible and supported arbitrary number of child types, with more generic rendering.
 
-Currently, two official plugins are available:
+Things to do if more time available:
+- exist more advanced solutions for tables like Tanstack Query, so consider use it
+- when fetch data, consider add loading spinner, tanstack query for handling remote state etc.
+- fix issues with duplicate ID's, this may cause unexpected component behavior
+- deeply nested children are currently supported, but rendering performance might degrade if the data tree becomes too large, so definitively consider performance optimization
+- redesign and add responsivity
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+I spent few hours of building it, but no more than one day :)
