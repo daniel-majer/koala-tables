@@ -1,13 +1,13 @@
-import { Table } from './components/Table'
-import { DataContext } from './context/TableContext'
-import { use } from 'react'
+import Table from './components/Tablev2'
+import { data } from './data'
 
 function App() {
-  const { tableData } = use(DataContext)
-
   return (
-    <div className='bg-zinc-900 text-white min-h-screen pt-10 flex'>
-      <Table data={tableData} />
+    <div className='min-h-screen bg-zinc-900 text-white'>
+      <Table data={data}>
+        <Table.Header />
+        <Table.Body />
+      </Table>
     </div>
   )
 }
