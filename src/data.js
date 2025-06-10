@@ -31,7 +31,46 @@ export const data = [
                       'Nemesis ID': '1007',
                       'Secrete Code': '1799820570',
                     },
-                    children: {},
+                    children: {
+                      test: {
+                        records: [
+                          {
+                            data: {
+                              ID: '2422',
+                              'Nemesis ID': '758',
+                              'Secrete Code': '4168664804',
+                            },
+                            children: {
+                              test2: {
+                                records: [
+                                  {
+                                    data: {
+                                      ID: '2008',
+                                      'Nemesis ID': '1007',
+                                      'Secrete Code': '1799820570',
+                                    },
+                                    children: {
+                                      test3: {
+                                        records: [
+                                          {
+                                            data: {
+                                              ID: '2422',
+                                              'Nemesis ID': '758',
+                                              'Secrete Code': '4168664804',
+                                            },
+                                            children: {},
+                                          },
+                                        ],
+                                      },
+                                    },
+                                  },
+                                ],
+                              },
+                            },
+                          },
+                        ],
+                      },
+                    },
                   },
                 ],
               },

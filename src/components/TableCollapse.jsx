@@ -5,8 +5,6 @@ export const TableCollapse = ({ row, isCollapsed }) => {
     child => child?.records || []
   )
 
-  if (!childrenData.length) return null
-
   return (
     <tr>
       <td colSpan={Object.keys(row.data).length + 2}>
