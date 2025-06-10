@@ -1,12 +1,23 @@
-import { createContext, useState } from 'react'
+import { createContext, use, useState } from 'react'
 import { data } from '../data'
 
-export const DataContext = createContext({})
+const DataContext = createContext({})
 
-export const TableContext = ({ children }) => {
+const TableContext = ({ children }) => {
   const [tableData, setTableData] = useState(data)
 
   return (
     <DataContext value={{ tableData, setTableData }}>{children}</DataContext>
   )
 }
+
+function useTableContext() {
+  const context = use(DataContext)
+  if (!context) {
+    throw new Error(
+      'useTableContext must be used within a TableContext provider'
+    )
+  }
+  return context
+}
+export { TableContext, useTableContext }

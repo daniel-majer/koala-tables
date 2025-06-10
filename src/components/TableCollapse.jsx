@@ -1,6 +1,6 @@
 import { Table } from './Table'
 
-export const TableCollapse = ({ row, isCollapsed }) => {
+export const TableCollapse = ({ row }) => {
   const childrenData = Object.values(row.children || {}).flatMap(
     child => child?.records || []
   )
@@ -8,11 +8,7 @@ export const TableCollapse = ({ row, isCollapsed }) => {
   return (
     <tr>
       <td colSpan={Object.keys(row.data).length + 2}>
-        <div
-          className={`transition-all duration-300 overflow-hidden ${
-            isCollapsed ? 'max-h-[960px] opacity-100' : 'max-h-0 opacity-0'
-          }`}
-        >
+        <div>
           <div className='bg-zinc-800 p-4 px-30 rounded'>
             <Table data={childrenData} />
           </div>

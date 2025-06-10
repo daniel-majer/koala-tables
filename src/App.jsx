@@ -1,9 +1,8 @@
 import { Table } from './components/Table'
-import { DataContext } from './context/TableContext'
-import { use } from 'react'
+import { useTableContext } from './context/TableContext'
 
 function App() {
-  const { tableData } = use(DataContext)
+  const { tableData } = useTableContext()
 
   return (
     <div className='bg-zinc-900 text-white min-h-screen flex'>
