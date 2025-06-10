@@ -24,7 +24,7 @@ export const TableRow = ({ row }) => {
 
   return (
     <>
-      <tr className='hover:bg-zinc-600'>
+      <tr className='hover:bg-zinc-600 bg-zinc-900'>
         <td className='border border-zinc-700 p-2'>
           <SquareChevronDownIcon
             onClick={() => setIsCollapsed(!isCollapsed)}
