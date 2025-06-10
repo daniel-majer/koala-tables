@@ -5,7 +5,7 @@ Hey, I created 2 versions of design patterns. Please check both branches (main, 
 Tables are reusable, flexible and supported arbitrary number of child types, with more generic rendering.
 
 Things to do if more time available:
-- exist more advanced solutions for tables like Tanstack Query, so consider use it
+- exist more advanced solutions for tables like Tanstack Tables etc., so consider use it
 - when fetch data, consider add loading spinner, tanstack query for handling remote state etc.
 - fix issues with duplicate ID's, this may cause unexpected component behavior
 - deeply nested children are currently supported, but rendering performance might degrade if the data tree becomes too large, so definitively consider performance optimization
