@@ -1,10 +1,26 @@
 import { SquareChevronDownIcon, XIcon } from 'lucide-react'
-import { useState } from 'react'
+import { use, useEffect, useState } from 'react'
 import { TableCollapse } from './TableCollapse'
+import { DataContext } from '../context/TableContext'
+import { deleteRecursive } from '../utils/helper'
 
 export const TableRow = ({ row }) => {
   const [isCollapsed, setIsCollapsed] = useState(false)
-  console.log(row)
+  const { tableData, setTableData } = use(DataContext)
+
+  useEffect(() => {
+    if (row.children && Object.keys(row.children).length === 0) {
+      setIsCollapsed(false)
+    }
+  }, [row.children])
+
+  const handleDelete = rowRef => {
+    const newData = tableData
+      .map(item => deleteRecursive(item, rowRef))
+      .filter(Boolean)
+    if (isCollapsed) setIsCollapsed(false)
+    setTableData(newData)
+  }
 
   return (
     <>
@@ -12,11 +28,11 @@ export const TableRow = ({ row }) => {
         <td className='border border-zinc-700 p-2'>
           <SquareChevronDownIcon
             onClick={() => setIsCollapsed(!isCollapsed)}
-            className={`mx-auto  transition duration-500  ${
-              isCollapsed ? 'rotate-180' : ''
+            className={`mx-auto cursor-pointer transition duration-300  ${
+              isCollapsed ? 'rotate-180' : 'rotate-0'
             } ${
               row.children.has_nemesis || row.children.has_secrete
-                ? ''
+                ? 'opacity-100'
                 : 'opacity-10  pointer-events-none'
             }`}
           />
@@ -28,7 +44,10 @@ export const TableRow = ({ row }) => {
           </td>
         ))}
         <td className='border border-zinc-700 p-2'>
-          <XIcon className='text-red-500 mx-auto cursor-pointer' />
+          <XIcon
+            className='text-red-500 mx-auto cursor-pointer'
+            onClick={() => handleDelete(row.data)}
+          />
         </td>
       </tr>
       <TableCollapse row={row} isCollapsed={isCollapsed} />

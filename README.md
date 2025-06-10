@@ -1,5 +1,8 @@
 # React + Vite
 
+- exist more advanced solutions for tables like Tanstack Query
+- when fetch, I could add loading spinner, tanstack query for handling remote state etc.
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
