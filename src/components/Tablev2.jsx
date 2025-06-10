@@ -76,7 +76,7 @@ const Row = ({ row }) => {
 
   return (
     <>
-      <tr className='hover:bg-zinc-600'>
+      <tr className='hover:bg-zinc-600 bg-zinc-900'>
         <td className='border border-zinc-700 p-2'>
           <SquareChevronDownIcon
             onClick={() => setIsCollapsed(!isCollapsed)}
@@ -117,7 +117,7 @@ const Collapse = ({ row, isCollapsed }) => {
       <td colSpan={Object.keys(row.data).length + 2}>
         <div
           className={`transition-all duration-300 overflow-hidden ${
-            isCollapsed ? 'max-h-fit opacity-100' : 'max-h-0 opacity-0'
+            isCollapsed ? 'max-h-[960px] opacity-100' : 'max-h-0 opacity-0'
           }`}
         >
           <div className='bg-zinc-800 p-4 px-30 rounded'>
