@@ -112,8 +112,6 @@ const Collapse = ({ row, isCollapsed }) => {
     child => child?.records || []
   )
 
-  if (!childrenData.length) return null
-
   return (
     <tr>
       <td colSpan={Object.keys(row.data).length + 2}>
@@ -122,12 +120,12 @@ const Collapse = ({ row, isCollapsed }) => {
             isCollapsed ? 'max-h-fit opacity-100' : 'max-h-0 opacity-0'
           }`}
         >
-          <div className='bg-zinc-800 p-4 px-40 rounded'>
+          <div className='bg-zinc-800 p-4 px-30 rounded'>
             <table className='w-full text-center border-collapse self-start'>
               <thead>
                 <tr>
                   <th className='border border-zinc-700 p-2 bg-zinc-800' />
-                  {Object.keys(childrenData[0].data).map((key, idx) => (
+                  {Object.keys(childrenData[0]?.data || []).map((key, idx) => (
                     <th
                       key={idx}
                       className='border border-zinc-700 p-2 bg-zinc-800'
