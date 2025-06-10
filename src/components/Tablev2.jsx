@@ -7,6 +7,16 @@ const TableContext = createContext({})
 const Table = ({ children, data: serverData }) => {
   const [data, setData] = useState(serverData)
 
+  if (!data || !data?.length) {
+    return (
+      <tbody className='flex h-full min-h-[500px] items-center justify-center text-black transition duration-500 dark:text-white'>
+        <tr>
+          <td>No data available</td>
+        </tr>
+      </tbody>
+    )
+  }
+
   return (
     <TableContext value={{ data, setData }}>
       <table className='w-full text-center border-collapse self-start'>
@@ -18,13 +28,13 @@ const Table = ({ children, data: serverData }) => {
 
 const Header = () => {
   const { data } = use(TableContext)
-  const headerCell = data[0] ? Object.keys(data[0].data).concat('Delete') : []
+  const headerNames = data[0] ? Object.keys(data[0].data).concat('Delete') : []
 
   return (
     <thead>
       <tr>
         <th className='border border-zinc-700 p-2 bg-zinc-800' />
-        {headerCell.map((cell, idx) => (
+        {headerNames.map((cell, idx) => (
           <th key={idx} className='border border-zinc-700 p-2 bg-zinc-800'>
             {cell}
           </th>
@@ -36,16 +46,6 @@ const Header = () => {
 
 const Body = () => {
   const { data } = use(TableContext)
-
-  if (!data?.length) {
-    return (
-      <tbody className='flex h-full min-h-[500px] items-center justify-center text-black transition duration-500 dark:text-white'>
-        <tr>
-          <td>No data available</td>
-        </tr>
-      </tbody>
-    )
-  }
 
   return (
     <tbody>
@@ -102,12 +102,12 @@ const Row = ({ row }) => {
           />
         </td>
       </tr>
-      <Collapse row={row} isCollapsed={isCollapsed} />
+      {isCollapsed && <Collapse row={row} />}
     </>
   )
 }
 
-const Collapse = ({ row, isCollapsed }) => {
+const Collapse = ({ row }) => {
   const childrenData = Object.values(row.children || {}).flatMap(
     child => child?.records || []
   )
@@ -115,11 +115,7 @@ const Collapse = ({ row, isCollapsed }) => {
   return (
     <tr>
       <td colSpan={Object.keys(row.data).length + 2}>
-        <div
-          className={`transition-all duration-300 overflow-hidden ${
-            isCollapsed ? 'max-h-[960px] opacity-100' : 'max-h-0 opacity-0'
-          }`}
-        >
+        <div>
           <div className='bg-zinc-800 p-4 px-30 rounded'>
             <table className='w-full text-center border-collapse self-start'>
               <thead>
