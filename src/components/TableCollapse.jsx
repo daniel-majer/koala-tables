@@ -1,8 +1,11 @@
 import { Table } from './Table'
 
 export const TableCollapse = ({ row, isCollapsed }) => {
-  const childrenDataTable =
-    row.children.has_nemesis?.records || row.children.has_secrete?.records || []
+  const childrenData = Object.values(row.children || {}).flatMap(
+    child => child?.records || []
+  )
+
+  if (!childrenData.length) return null
 
   return (
     <tr>
@@ -13,7 +16,7 @@ export const TableCollapse = ({ row, isCollapsed }) => {
           }`}
         >
           <div className='bg-zinc-800 p-4 px-40 rounded'>
-            <Table data={childrenDataTable} />
+            <Table data={childrenData} />
           </div>
         </div>
       </td>
