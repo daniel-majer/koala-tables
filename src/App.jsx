@@ -6,7 +6,7 @@ function App() {
   const { tableData } = use(DataContext)
 
   return (
-    <div className='bg-zinc-900 text-white min-h-screen pt-10 flex'>
+    <div className='bg-zinc-900 text-white min-h-screen flex'>
       <Table data={tableData} />
     </div>
   )
