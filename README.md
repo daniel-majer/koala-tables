@@ -10,6 +10,8 @@ Things to do if more time available:
 - fix issues with duplicate ID's, this may cause unexpected component behavior
 - deeply nested children are currently supported, but rendering performance might degrade if the data tree becomes too large, so definitively consider performance optimization
 - redesign and add responsivity
+- build with TypeScript for type safety
+- if app will be bigger, consider advanced state management (Redux, Zustand)
 
 
 I spent few hours of building it, but no more than one day :)
