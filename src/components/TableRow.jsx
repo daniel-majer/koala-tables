@@ -31,7 +31,7 @@ export const TableRow = ({ row }) => {
             className={`mx-auto cursor-pointer transition duration-300  ${
               isCollapsed ? 'rotate-180' : 'rotate-0'
             } ${
-              row.children.has_nemesis || row.children.has_secrete
+              Object.keys(row.children).length > 0
                 ? 'opacity-100'
                 : 'opacity-10  pointer-events-none'
             }`}
