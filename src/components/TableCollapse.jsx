@@ -10,10 +10,10 @@ export const TableCollapse = ({ row, isCollapsed }) => {
       <td colSpan={Object.keys(row.data).length + 2}>
         <div
           className={`transition-all duration-300 overflow-hidden ${
-            isCollapsed ? 'max-h-[480px] opacity-100' : 'max-h-0 opacity-0'
+            isCollapsed ? 'max-h-fit opacity-100' : 'max-h-0 opacity-0'
           }`}
         >
-          <div className='bg-zinc-800 p-4 px-40 rounded'>
+          <div className='bg-zinc-800 p-4 px-30 rounded'>
             <Table data={childrenData} />
           </div>
         </div>
